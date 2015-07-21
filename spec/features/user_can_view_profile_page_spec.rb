@@ -14,6 +14,7 @@ describe User, type: :feature do
     visit root_path
 
     assert_equal 200, page.status_code
+    binding.pry
     click_link "login"
 
     expect(current_path).to eq(root_path)

@@ -15,5 +15,13 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  # def self.instagram_client
+  #   @client ||= Instagram.client(access_token: current_user.token)
+  # end
+  #
+  # def user_media_feed
+  #   instagram_client.user_media_feed
+  # end
 end
 
