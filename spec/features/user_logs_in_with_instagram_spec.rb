@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe User, type: :feature do
-#  include Capybara::DSL
   include OmniAuthUser
 
   before do
