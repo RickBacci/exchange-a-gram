@@ -1,2 +1,5 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+.container-fluid
+  .row
+    .col-md-6.col-md-offset-3.text-center
+      -if current_user
+        %h1= "Hello, #{current_user.name.capitalize}!"
