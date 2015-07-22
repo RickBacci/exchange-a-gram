@@ -2,21 +2,19 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title ExchangeAGram
+    %title Exchange-A-Gram
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
     .container-fluid
-      .row
-        .col-md-6.col-md-offset-3
-          %p
-            -if current_user
-              =link_to 'View Profile', user_path(current_user), class: "profile"
-              =link_to 'logout', logout_path, method: :delete, class: "logout"
-            -else
-              =link_to 'login', login_path, role: 'button', class: "login btn btn-primary"
-        = yield
-
-        %script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
-        %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+      .row.one
+        .col-md-8.col-md-offset-2
+          = render 'shared/nav'
+      .row.yielded_content
+        .col-md-8.col-md-offset-2
+          -# need flash here!!!
+          = yield
+  %foot
+    .row.footer
+      .col-md-12

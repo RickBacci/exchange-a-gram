@@ -1,24 +1,23 @@
--# .navbar.navbar-default{role: "navigation"}
--#   .container-fluid
--#     .navbar-header
--#       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
--#         %span.sr-only Toggle navigation
--#       %a.navbar-brand{href: "#"} ExchangeAGram
--#     .navbar-collapse.collapse.navbar-inverse
-      -# %ul.nav.navbar-nav.navbar-right
-        -# %li
+.navbar.navbar-inverse{role: "navigation"}
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand{href: "/"} Exchange-A-Gram
+  .navbar-collapse.collapse
+    %ul.nav.navbar-nav
+      %li.search.navbar-center
+        =form_tag root_path, class: "navbar-search", method: :get do
+          =text_field_tag :name, nil, class: "search-query span3", placeholder: "Search"
+    %ul.nav.navbar-nav.navbar-right
+      %li
         -if current_user
-          =link_to 'View Profile', user_path(current_user), class: "profile"
-          =link_to 'logout', logout_path, method: :delete, class: "logout"
+          %li
+            =link_to 'View Profile', user_path(current_user), class: "profile"
+          %li
+            =link_to 'logout', logout_path, method: :delete, class: "logout"
         -else
-          =link_to 'login', login_path, role: 'button', class: "login btn btn-primary"
--#     / /.nav-collapse
--#   / /.container-fluid
--# / Main component for a primary marketing message or call to action
--# / /container
--# /
--# %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
--# %script{src: "js/bootstrap.min.js"}
-
-
-
+          %li
+            =link_to 'login', login_path, class: "login"

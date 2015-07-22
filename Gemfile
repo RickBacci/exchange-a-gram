@@ -35,6 +35,7 @@ group :development do
   gem 'meta_request'
   gem 'rails_12factor'
   gem 'better_errors'
+  gem 'awesome_print', :require => 'ap'
   gem 'binding_of_caller'
 end
 

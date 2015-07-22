@@ -3,9 +3,9 @@
     .p.text-left
       %h1= "Profile: #{current_user.name}"
       %br
-      %p= "Total number of posts: #{@client.user.counts.media}"
-      %p= "Total number of followers: #{@client.user.counts.followed_by}"
-      %p= "Total number of people you are following: #{@client.user.counts.follows}"
+      %p= "Total number of posts: #{current_user.media}"
+      %p= "Total number of followers: #{current_user.followed_by}"
+      %p= "Total number of people you are following: #{current_user.follows}"
       = link_to image_tag current_user.image, src: "Picture of Rick Bacci"
 
 

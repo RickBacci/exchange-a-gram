@@ -10,3 +10,46 @@
  *= require font-awesome
  *= require_tree .
 */
+
+
+
+.container-fluid {
+  background-color: #1B3C59;
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+  font-size: medium;
+  font-weight: 100;
+}
+
+.nav > li > a.profile {
+  padding-right: 50px;
+}
+
+.nav > li > a.logout {
+  padding-right: 75px;
+}
+
+.nav > li > a.login {
+  padding-right: 75px;
+}
+
+#name {
+  margin: 10px;
+}
+
+.search {
+  margin: 25px, 25px
+}
+
+.well {
+  background-color: #1B3C59;
+}
+.span {
+  text-decoration: bold;
+}
+.image {
+  width: 100%;
+  overflow: none;
+}
+
