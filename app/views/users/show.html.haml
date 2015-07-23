@@ -1,12 +1,15 @@
 .row
-  .col-md-8.col-md-offset-2
+  .col-md-4
+    #profile_image
+    = image_tag @user.profile_picture, src: "Picture of #{@user.username}"
+  .col-md-8
     .p.text-left
-      %h1= "Profile: #{current_user.name}"
+      %h1= "Profile: #{@user.username}"
       %br
-      %p= "Total number of posts: #{current_user.media}"
-      %p= "Total number of followers: #{current_user.followed_by}"
-      %p= "Total number of people you are following: #{current_user.follows}"
-      = link_to image_tag current_user.image, src: "Picture of Rick Bacci"
+      %p= "Total number of posts: #{@user.counts.media}"
+      %p= "Total number of followers: #{@user.counts.followed_by}"
+      %p= "Total number of people you are following: #{@user.counts.follows}"
+  .col-md-2
 
 
 

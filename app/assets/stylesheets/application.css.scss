@@ -10,16 +10,16 @@
  *= require font-awesome
  *= require_tree .
 */
-
+body {
+  background-color: #1B3C59;
+  padding: 10px;
+}
 
 
 .container-fluid {
-  background-color: #1B3C59;
-  padding-top: 10px;
   text-align: center;
-  color: white;
+  color: whitesmoke;
   font-size: medium;
-  font-weight: 100;
 }
 
 .nav > li > a.profile {
@@ -52,4 +52,35 @@
   width: 100%;
   overflow: none;
 }
+.footer {
+  color: whitesmoke;
+}
 
+.panel {
+  color: whitesmoke;
+  background-color: #1B3C75;
+}
+
+
+.panel-body {
+  color: whitesmoke;
+  background-color: #1B3C75;
+}
+
+div > a > img {
+  border-radius: 25px;
+  border-style: ridge;
+  border-width: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img {
+  // margin-left: auto;
+  // margin-right: auto;
+  width: 80%;
+}
+
+#profile_image {
+
+}
