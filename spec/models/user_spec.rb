@@ -25,4 +25,29 @@ RSpec.describe User, type: :model do
 
     expect(user).to be_valid
   end
+
+  it 'should have a token' do
+    user = User.find_or_create_from_oauth(mock_auth)
+
+    expect(user.token).to eq(ENV['instagram_token'])
+  end
+
+  it 'has an instagram provider' do
+    user = User.find_or_create_from_oauth(mock_auth)
+
+    expect(user.provider).to eq("instagram")
+  end
+  it 'should have a client' do
+    user = User.find_or_create_from_oauth(mock_auth)
+
+    expect(user.instagram_client).to_not be_nil
+  end
+
+  it 'has a media feed' do
+    VCR.use_cassette("media") do
+      user = User.find_or_create_from_oauth(mock_auth)
+     # expect(user.instagram_client.user.counts.media).to_not be_nil
+    end
+  end
+
 end

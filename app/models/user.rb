@@ -19,9 +19,6 @@ class User < ActiveRecord::Base
   def instagram_client
     @client ||= Instagram.client(access_token: token)
   end
-  def endpoint_url
-    instagram_client.endpoint
-  end
 
   def media_feed
     instagram_client.user_media_feed
