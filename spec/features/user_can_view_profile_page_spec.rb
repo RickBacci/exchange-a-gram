@@ -19,7 +19,7 @@ describe User, type: :feature do
       expect(current_path).to eq(root_path)
 #      expect(page).to have_content('Ricky')
 
-      click_link "View Profile"
+      click_link "brownieelf175"
 
       expect(page.status_code).to eq 200
       expect(page).to have_content('Profile')

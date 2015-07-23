@@ -15,8 +15,8 @@
       %li
         -if current_user
           %li
-            =link_to 'View Profile', user_path(current_user.uid), class: "profile"
-          %li
+            =link_to current_user.instagram_client.user.username, user_path(current_user.uid), class: "profile"
+          %li#logout
             =link_to 'logout', logout_path, method: :delete, class: "logout"
         -else
           %li

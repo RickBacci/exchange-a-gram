@@ -8,15 +8,21 @@ describe User, type: :feature do
     Capybara.app = ExchangeAGram::Application
     stub_omniauth
   end
-  it 'can login with Instagam' do
 
-    visit "/"
-    assert_equal 200, page.status_code
-    click_link "login"
-    assert_equal "/", current_path
-    assert page.has_content?("Ricky")
+  it 'can login with instagram' do
+    VCR.use_cassette("login") do
+      visit root_path
 
-    assert page.has_link?("logout")
+      assert_equal 200, page.status_code
+      click_link "login"
+
+      expect(current_path).to eq(root_path)
+
+      within('#logout') do
+         expect(page).to have_link("logout")
+
+      end
+    end
   end
 end
 
