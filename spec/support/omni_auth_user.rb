@@ -10,7 +10,7 @@ module OmniAuthUser
           name: "Ricky",
         },
         credentials: {
-          token: "175",
+          token: ENV['instagram_token'],
           secret: "secretpizza"
         }
       })

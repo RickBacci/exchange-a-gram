@@ -1,16 +1,16 @@
 class User < ActiveRecord::Base
   def self.find_or_create_from_oauth(oauth)
-    user = User.find_or_create_by(provider: oauth.provider, uid: oauth.uid)
+    user = User.find_or_create_by(provider: oauth['provider'], uid: oauth['uid'])
 
-    user.provider = oauth.provider
-    user.uid      = oauth.uid
-    user.nickname = oauth.info.nickname
-    user.name     = oauth.info.name
-    user.image    = oauth.info.image
-    user.bio      = oauth.info.bio
-    user.website  = oauth.info.website
-    user.extra    = oauth.info.extra
-    user.token    = oauth.credentials.token
+    user.provider = oauth['provider']
+    user.uid      = oauth['uid']
+    user.nickname = oauth['info']['nickname']
+    user.name     = oauth['info']['name']
+    user.image    = oauth['info']['image']
+    user.bio      = oauth['info']['bio']
+    user.website  = oauth['info']['website']
+    user.extra    = oauth['info']['extra']
+    user.token    = oauth['credentials']['token']
     user.save
 
     user
@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
 
   def instagram_client
     @client ||= Instagram.client(access_token: token)
+  end
+  def endpoint_url
+    instagram_client.endpoint
   end
 
   def media_feed
@@ -36,7 +39,11 @@ class User < ActiveRecord::Base
     instagram_client.user.counts.followed_by
   end
 
-  
+  def user_profile(id)
+    "/user/#{id}/?access_token=#{ENV['instagram_token']}"
+  end
 
-
+  def testing
+    instagram_client.user("43060272")
+  end
 end
