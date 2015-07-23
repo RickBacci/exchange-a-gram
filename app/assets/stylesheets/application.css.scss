@@ -19,7 +19,6 @@ body {
 .container-fluid {
   text-align: center;
   color: whitesmoke;
-  font-size: medium;
 }
 
 .nav > li > a.profile {
@@ -84,3 +83,9 @@ div > a > img {
 #profile_image {
 
 }
+
+input#name {
+  color: black;
+}
+
+

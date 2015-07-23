@@ -38,12 +38,4 @@ class User < ActiveRecord::Base
   def followed_by
     instagram_client.user.counts.followed_by
   end
-
-  def user_profile(id)
-    "/user/#{id}/?access_token=#{ENV['instagram_token']}"
-  end
-
-  def testing
-    instagram_client.user("43060272")
-  end
 end

@@ -13,8 +13,8 @@
               = how_long_since(user.created_time)
         .row
           .col-md-12
-            .image.img-rounded
-              = link_to image_tag user.images.standard_resolution.url
+            .image.img-rounded.img-responsive
+              = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
         .row
           .col-md-12.text-center
             %p= "Comments: #{user.comments.count}"
