@@ -1,36 +1,34 @@
--# .row.index_begin
--#   .col-md-12
 -if current_user
-  %ul
-    -current_user.instagram_client.user_media_feed.each do |user|
-      %li.list-unstyled
-        .row
-          .col-md-6
-            %p.text-left
-              = link_to user.user.username, user_path(user.user.id)
-          .col-md-6
-            %p.text-right
-              = how_long_since(user.created_time)
-        .row
-          .col-md-12
-            .image.img-rounded.img-responsive
-              = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
-        .row
-          .col-md-12.text-center
-            %p= "Comments: #{user.comments.count}"
-        .row.comments_loop
-          .col-md-12.text-center
-            %ul
-              - user.comments.data.each do |d|
-                %li.list-unstyled.well
-                  .row
-                    .col-md-6
-                      %p.text-left
-                        = "#{d.from.username}"
-                    .col-md-6
-                      %p.text-right
-                        = how_long_since(d.created_time)
-                  .row
-                    .col-md-12
-                      %p.text-left
-                        = d.text
+  .row
+    .col-xs-12.first-column
+      %ul
+      -current_user.instagram_client.user_media_feed.each do |user|
+        %li.list-unstyled
+          .row.center-picture.white
+            .col-xs-6.text-left
+              = link_to user.user.username, user_path(user.user.id), class: "text-left"
+            .col-xs-6.text-right
+              = link_to how_long_since(user.created_time), root_path, class: "text-right"
+        %li.list-unstyled
+          .image.img-rounded.img-responsive.comments.center-picture
+            = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
+            .comments.white
+            "Comments: #{user.comments.count}"
+            %a.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample", :role => "button"}
+              Link with href
+            %button.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
+              Button with data-target
+            #collapseExample.collapse
+              .well
+                "hellow world"
+            - user.comments.data.each do |d|
+              %li.list-unstyled
+                .comments.center-picture
+                  .row.panel-title.white
+                    .col-xs-6.text-left
+                      = "#{d.from.username}"
+                    .col-xs-6.text-right
+                      = how_long_since(d.created_time)
+                  %p.text-left.well
+                    = d.text
+                -# <div class="well well-sm">...</div>

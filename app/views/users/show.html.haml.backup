@@ -1,0 +1,30 @@
+.row
+  .col-md-4
+    #profile_image
+    = image_tag @user.profile_picture, src: "Picture of #{@user.username}"
+  .col-md-8
+    .p.text-left
+      %h1= "Profile: #{@user.username}"
+      %br
+      %p= "Total number of posts: #{@user.counts.media}"
+      %p= "Total number of followers: #{@user.counts.followed_by}"
+      %p= "Total number of people you are following: #{@user.counts.follows}"
+  .col-md-2
+.row
+  .col-md-12
+    %ul.list-unstyled
+      -current_user.instagram_client.user_recent_media. each do |picture|
+        %li.list-unstyled
+          .row
+            .col-md-6
+              %p.text-left
+                = link_to picture.user.username, user_path(picture.user.id)
+            .col-md-6
+              %p.text-right
+                = how_long_since(picture.created_time)
+          .row
+            .col-md-12
+              .image.img-rounded.img-responsive
+                = link_to (image_tag picture.images.standard_resolution.url, class: "img-responsive"), user_path(picture.user.id)
+
+

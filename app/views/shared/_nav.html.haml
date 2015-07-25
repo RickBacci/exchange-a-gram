@@ -1,23 +1,27 @@
-.navbar.navbar-inverse{role: "navigation"}
-  .navbar-header
-    %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
-      %span.sr-only Toggle navigation
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    %a.navbar-brand{href: "/"} Exchange-A-Gram
-  .navbar-collapse.collapse
-    %ul.nav.navbar-nav
-      %li.search.navbar-center
-        =form_tag root_path, class: "navbar-search", method: :get do
-          =text_field_tag :name, nil, class: "search-query span3", placeholder: "Search"
-    %ul.nav.navbar-nav.navbar-right
-      %li
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "/"} Exchange-A-Gram
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{:href => "#"} Home
+        %li.search
+          =form_tag root_path, class: "navbar-search", method: :get do
+            =text_field_tag :name, nil, class: "search-query span3", placeholder: "Search"
+      %ul.nav.navbar-nav.navbar-right
         -if current_user
           %li
             =link_to current_user.nickname, user_path(current_user.uid), class: "profile", name: "profile"
-          %li#logout
+          %li
             =link_to 'logout', logout_path, method: :delete, class: "logout"
         -else
           %li
             =link_to 'login', login_path, class: "login"
+    / /.nav-collapse
+

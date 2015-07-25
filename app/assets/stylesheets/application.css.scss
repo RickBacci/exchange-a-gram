@@ -1,70 +1,74 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 /*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require bootstrap_and_overrides
- *= require font-awesome
+ * require bootstrap_and_overrides
+ * require font-awesome
  *= require_tree .
 */
+@import "bootstrap";
+//
+
 body {
   background-color: #1B3C59;
-  padding: 10px;
+  font-size: medium;
 }
-
 
 .container-fluid {
   text-align: center;
-  color: whitesmoke;
 }
+ .navbar-nav > li.search {
+  padding-top: 10px;
+ }
 
-.nav > li > a.profile {
-  padding-right: 50px;
-}
-
-.nav > li > a.logout {
-  padding-right: 75px;
-}
-
-.nav > li > a.login {
-  padding-right: 75px;
-}
-
-#name {
-  margin: 10px;
-}
-
-.search {
-  margin: 25px, 25px
-}
-
-.well {
-  background-color: #1B3C59;
-}
-.span {
-  text-decoration: bold;
+.first-column {
+  // padding-left:  30px;
+  // padding-right: 30px;
 }
 .image {
-  width: 100%;
-  overflow: none;
+  max-width: 500px;
 }
-.footer {
-  color: whitesmoke;
+img {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
 }
 
+.white {
+  color: white;
+  padding:1%;
+}
+
+
+
+.well {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  padding: 0px;
+  }
+
+.center-picture {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  padding: 5px;
+}
 .panel {
   color: whitesmoke;
   background-color: #1B3C75;
 }
 
-
-.panel-body {
-  color: whitesmoke;
-  background-color: #1B3C75;
-}
+// .panel-body {
+//   color: whitesmoke;
+//   background-color: #1B3C75;
+//   margin-left: auto;
+//   margin-right: auto;
+//   max-width: 500px;
+//   padding: 0px;
+// }
 
 div > a > img {
   border-radius: 25px;
@@ -73,19 +77,3 @@ div > a > img {
   margin-left: auto;
   margin-right: auto;
 }
-
-.img {
-  // margin-left: auto;
-  // margin-right: auto;
-  width: 80%;
-}
-
-#profile_image {
-
-}
-
-input#name {
-  color: black;
-}
-
-

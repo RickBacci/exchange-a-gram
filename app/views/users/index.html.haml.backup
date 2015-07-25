@@ -1,0 +1,36 @@
+-# .row.index_begin
+-#   .col-md-12
+-if current_user
+  %ul
+    -current_user.instagram_client.user_media_feed.each do |user|
+      %li.list-unstyled
+        .row
+          .col-md-6
+            %p.text-left
+              = link_to user.user.username, user_path(user.user.id)
+          .col-md-6
+            %p.text-right
+              = how_long_since(user.created_time)
+        .row
+          .col-md-12
+            .image.img-rounded.img-responsive
+              = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
+        .row
+          .col-md-12.text-center
+            %p= "Comments: #{user.comments.count}"
+        .row.comments_loop
+          .col-md-12.text-center
+            %ul
+              - user.comments.data.each do |d|
+                %li.list-unstyled.well
+                  .row
+                    .col-md-6
+                      %p.text-left
+                        = "#{d.from.username}"
+                    .col-md-6
+                      %p.text-right
+                        = how_long_since(d.created_time)
+                  .row
+                    .col-md-12
+                      %p.text-left
+                        = d.text
