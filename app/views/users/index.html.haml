@@ -12,23 +12,19 @@
         %li.list-unstyled
           .image.img-rounded.img-responsive.comments.center-picture
             = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
-            .comments.white
-            "Comments: #{user.comments.count}"
-            %a.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseExample", :role => "button"}
-              Link with href
-            %button.btn.btn-primary{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample", "data-toggle" => "collapse", :type => "button"}
-              Button with data-target
-            #collapseExample.collapse
-              .well
-                "hellow world"
-            - user.comments.data.each do |d|
-              %li.list-unstyled
-                .comments.center-picture
-                  .row.panel-title.white
-                    .col-xs-6.text-left
-                      = "#{d.from.username}"
-                    .col-xs-6.text-right
-                      = how_long_since(d.created_time)
-                  %p.text-left.well
+            .comments.white.text-center
+              %h4
+                Comments: #{user.comments.data.count}
+              - user.comments.data.each do |d|
+                .panel-default
+                  %h4
+                    .row
+                      .col-xs-6
+                        .text-left
+                          = "#{d.from.username}"
+                      .col-xs-6
+                        .text-right
+                          = how_long_since(d.created_time)
+                .well
+                  %p.text-left.text-black
                     = d.text
-                -# <div class="well well-sm">...</div>
