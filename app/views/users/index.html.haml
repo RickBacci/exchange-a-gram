@@ -1,30 +1,29 @@
 -if current_user
   .row
-    .col-xs-12.first-column
+    .col-md-12
       %ul
       -current_user.instagram_client.user_media_feed.each do |user|
         %li.list-unstyled
-          .row.center-picture.white
-            .col-xs-6.text-left
+          .row
+            .col-md-6
               = link_to user.user.username, user_path(user.user.id), class: "text-left"
-            .col-xs-6.text-right
+            .col-md-6
               = link_to how_long_since(user.created_time), root_path, class: "text-right"
-        %li.list-unstyled
-          .image.img-rounded.img-responsive.comments.center-picture
+          .img-rounded
             = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
-            .comments.white.text-center
-              %h4
-                Comments: #{user.comments.data.count}
-              - user.comments.data.each do |d|
-                .panel-default
-                  %h4
-                    .row
-                      .col-xs-6
-                        .text-left
-                          = "#{d.from.username}"
-                      .col-xs-6
-                        .text-right
-                          = how_long_since(d.created_time)
-                .well
-                  %p.text-left.text-black
-                    = d.text
+          .white.text-center
+            %h4
+              Comments: #{user.comments.data.count}
+            - user.comments.data.each do |d|
+              .row
+                .col-md-6
+                  .panel-default
+                    .text-left
+                      = "#{d.from.username}"
+                .col-md-6
+                  .panel-default
+                    .text-right
+                      = how_long_since(d.created_time)
+              .well
+                %p.text-left.text-black
+                  = d.text
