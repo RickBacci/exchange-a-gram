@@ -1,14 +1,16 @@
 -if current_user
   .row
-    .col-md-12
+    .col-md-10.col-md-offset-1.first-colum
       %ul
       -current_user.instagram_client.user_media_feed.each do |user|
         %li.list-unstyled
           .row
-            .col-md-6
-              = link_to user.user.username, user_path(user.user.id), class: "text-left"
-            .col-md-6
-              = link_to how_long_since(user.created_time), root_path, class: "text-right"
+            .col-xs-6.text-left
+              %h1
+                = link_to user.user.username, user_path(user.user.id), class: "text-left"
+            .col-xs-6.text-right
+              %h1
+                = link_to how_long_since(user.created_time), root_path, class: "text-right"
           .img-rounded
             = link_to (image_tag user.images.standard_resolution.url, class: "img-responsive"), user_path(user.user.id)
           .white.text-center
@@ -16,14 +18,14 @@
               Comments: #{user.comments.data.count}
             - user.comments.data.each do |d|
               .row
-                .col-md-6
-                  .panel-default
-                    .text-left
+                .col-xs-6.text-left
+                  %h1
+                    .panel-default
                       = "#{d.from.username}"
-                .col-md-6
-                  .panel-default
-                    .text-right
+                .col-xs-6.text-right
+                  %h1
+                    .panel-default
                       = how_long_since(d.created_time)
               .well
-                %p.text-left.text-black
+                .text-left.text-black
                   = d.text
