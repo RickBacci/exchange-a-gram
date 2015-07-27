@@ -24,6 +24,12 @@ body {
   padding-top: 10px;
  }
 
+ .container, .navbar-inverse {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 65em;
+ }
+
 img {
   margin-left: auto;
   margin-right: auto;
@@ -47,6 +53,8 @@ img {
   margin-right: auto;
   max-width: 65em;
   color:black;
+  background-color: #428bca;
+
   }
 
 .center-picture {
@@ -55,13 +63,12 @@ img {
   max-width: 65em;
 }
 .panel {
-  // color: whitesmoke;
+  color: #428bca;
   max-width: 65em;
 }
 
 
  .panel-body {
-   color: whitesmoke;
    background-color: #1B3C75;
    margin-left: auto;
    margin-right: auto;
